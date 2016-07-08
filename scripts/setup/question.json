@@ -1,34 +1,21 @@
 {
-  "image": "update",
-  "version": "0.3.1",
+  "image": "question",
+  "version": "0.1.0",
   "build": "{{PIPELINE_BUILD_NUMBER}}",
-  "schema": "20160623",
-  "permissions": [
-    {
-      "chmod": "755",
-      "chown": "node",
-      "path": "${APP_DIR}/files_update"
-    }
-  ],
+  "schema": "20160708",
+  "permissions": [],
   "envs": [
     {
       "name": "NODE_ENV",
       "default": "development",
-      "replacements": [
-        {
-          "pattern": "${NODE_ENV}",
-          "path": "${APP_DIR}/config/env/development.js",
-          "sudo": "node",
-          "type": "1"
-        }
-      ]
+      "replacements": []
     },
     {
-      "name": "UPDATE_TITLE",
-      "default": "UpdateService",
+      "name": "QUESTION_TITLE",
+      "default": "Question",
       "replacements": [
         {
-          "pattern": "{{UPDATE_TITLE}}",
+          "pattern": "{{QUESTION_TITLE}}",
           "path": "${APP_DIR}/config/env/all.js",
           "sudo": "node",
           "type": "1"
@@ -36,11 +23,11 @@
       ]
     },
     {
-      "name": "UPDATE_DESC",
-      "default": "$UPDATE_TITLE",
+      "name": "QUESTION_DESC",
+      "default": "$QUESTION_TITLE",
       "replacements": [
         {
-          "pattern": "{{UPDATE_DESC}}",
+          "pattern": "{{QUESTION_DESC}}",
           "path": "${APP_DIR}/config/env/all.js",
           "sudo": "node",
           "type": "1"
@@ -52,7 +39,7 @@
       "default": "",
       "replacements": [
         {
-          "pattern": "{{UPDATE_DBHOST}}",
+          "pattern": "{{QUESTION_DBHOST}}",
           "path": "${APP_DIR}/config/env/${NODE_ENV}.js",
           "sudo": "node",
           "type": "3"
@@ -72,11 +59,11 @@
       ]
     },
     {
-      "name": "UPDATE_DBNAME",
-      "default": "updateservice",
+      "name": "QUESTION_DBNAME",
+      "default": "question",
       "replacements": [
         {
-          "pattern": "{{UPDATE_DBNAME}}",
+          "pattern": "{{QUESTION_DBNAME}}",
           "path": "${APP_DIR}/config/env/${NODE_ENV}.js",
           "sudo": "node",
           "type": "1"
@@ -84,11 +71,11 @@
       ]
     },
     {
-      "name": "UPDATE_DBUSER",
+      "name": "QUESTION_DBUSER",
       "default": "",
       "replacements": [
         {
-          "pattern": "{{UPDATE_DBUSER}}",
+          "pattern": "{{QUESTION_DBUSER}}",
           "path": "${APP_DIR}/config/env/${NODE_ENV}.js",
           "sudo": "node",
           "type": "1"
@@ -96,11 +83,11 @@
       ]
     },
     {
-      "name": "UPDATE_DBPASS",
+      "name": "QUESTION_DBPASS",
       "default": "",
       "replacements": [
         {
-          "pattern": "{{UPDATE_DBPASS}}",
+          "pattern": "{{QUESTION_DBPASS}}",
           "path": "${APP_DIR}/config/env/${NODE_ENV}.js",
           "sudo": "node",
           "type": "1"
@@ -108,12 +95,5 @@
       ]
     }
   ],
-  "storages": [
-    {
-      "type": "1",
-      "chown": "",
-      "path": "${APP_DIR}/files_update",
-      "base": "update"
-    }
-  ]
+  "storages": []
 }

@@ -5,24 +5,24 @@
 #
 runonce_update() {
 
-    notify title "UPDATE: Initialize container settings ... "
+    notify title "QUESTION: Initialize container settings ... "
 
     # Fixing working directory permissions
-    lcs-rt --fix-perm update
+    lcs-rt --fix-perm question
 
     # Determine new install or restoring
     if [[ ${LCS_NEW_INSTALL} == true ]]; then
         # initial envs from user inputs and defaults
-        lcs-rt --envs update && source ${ENVS_FILE}
+        lcs-rt --envs question && source ${ENVS_FILE}
 
         # custom code after envs initialized
     else
         # custom code when restore
-        notify success "Update restored."
+        notify success "Question restored."
     fi
 
     # Persist directories and files
-    lcs-rt --persistence update
+    lcs-rt --persistence question
 
-    notify title "UPDATE: Initialization completed."
+    notify title "QUESTION: Initialization completed."
 }

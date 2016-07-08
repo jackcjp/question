@@ -1,4 +1,4 @@
-# Question Service API Reference 0.3.1
+# Question Service API Reference 0.1.0
 
 ***
 
@@ -6,7 +6,7 @@ Question Service 运行环境，适用于研发及部署。
 
 本镜像提供：
 
-* question service 0.3.1
+* question service 0.1.0
 * Node.js 4.3.0
 * Npm 3.8.7
 * Node Packages:
