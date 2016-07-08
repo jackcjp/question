@@ -1,0 +1,31 @@
+devdb:
+  image: reg.leadstec.com/mongo:latest
+  ports:
+    - "41437:27017"
+  volumes:
+    - /var/lib/docker/vfs/dir/logcenter/question-dev-db.microservice.com:/data/log
+    - /var/lib/docker/vfs/dir/dbcenter/question-dev-db.microservice.com:/data/db
+    - /var/lib/docker/vfs/dir/datacenter/question-dev-db.microservice.com:/data/persist
+  environment:
+    - EMAIL=user@leadstec.com
+    - MONGOD_ENABLE_SMALLFILES=true
+  hostname: question-dev-db.microservice.com
+  restart: always
+app:
+  image: edu.lxpt.cn/question:latest
+  ports:
+    - "41439:3000"
+    - "41438:22"
+  volumes:
+    - /var/lib/docker/vfs/dir/logcenter/question-dev.microservice.com:/data/log
+    - /var/lib/docker/vfs/dir/datacenter/question-dev.microservice.com:/data/persist
+  environment:
+    - EMAIL=user@leadstec.com
+    - ENGINE=localhost
+    - ENABLE_SSHD=true
+    - NODE_ENV=development
+    - PORT=3000
+  links:
+    - devdb:db
+  hostname: question-dev.microservice.com
+  restart: always

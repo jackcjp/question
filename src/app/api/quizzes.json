@@ -1,0 +1,315 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample server Quizzes service.\n本service是基于nodejs开发的，以调用API的方式对外提供Quizzes服务",
+        "version": "0.1.0",
+        "title": "Quizzes",
+        "contact": {
+            "name": "jpchen@leadstec.com"
+        }
+    },
+    "host": "nodechen.com:41439",
+    "schemes": [
+        "http"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/api/{filename}": {
+            "get": {
+                "tags": [
+                    "api"
+                ],
+                "summary": "Get the api json file",
+                "description": "json 格式文档",
+                "operationId": "getApi",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "filename",
+                        "description": "api文档的名字",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success operation",
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                }
+            }
+        },
+        "/quizzes": {
+            "get": {
+                "tags": [
+                    "quiz"
+                ],
+                "summary": "Get the quizzes list by condition",
+                "description": "",
+                "operationId": "getQuizzes",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "title",
+                        "description": "the name of the quiz",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "job_id",
+                        "description": "the job_id of the quiz",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "count",
+                        "description": "页码",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "每页数量",
+                        "required": false,
+                        "type": "number"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sort",
+                        "description": "排序方式，如：`createdOn(default)/-createdOn/(-)title`",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Quizzes"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "quiz"
+                ],
+                "summary": "Add a new quiz",
+                "description": "",
+                "operationId": "addQuiz",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Quiz object that needs to be added",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Quizzes"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success operation",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "rest_auth": [
+                            "write_rest",
+                            "read_rest"
+                        ]
+                    }
+                ]
+            }
+        },
+        "/quizzes/{quizId}": {
+            "get": {
+                "tags": [
+                    "quiz"
+                ],
+                "summary": "Find quiz by ID",
+                "description": "Return a quiz",
+                "operationId": "getQuizById",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "quizId",
+                        "description": "ID of quiz that needs to be fetched",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful get",
+                        "schema": {
+                            "$ref": "#/definitions/Quizzes"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Quiz not found"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    },
+                    {
+                        "rest_auth": [
+                            "write_rest",
+                            "read_rest"
+                        ]
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "quiz"
+                ],
+                "summary": "Update a quiz",
+                "description": "",
+                "operationId": "updateQuiz",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "quizId",
+                        "description": "ID of quiz that needs to be updated",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Quizzes"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success updated!",
+                        "schema": {
+                            "$ref": "#/definitions/Quizzes"
+                        }
+                    },
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "rest_auth": [
+                            "write_rest",
+                            "read_rest"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "quiz"
+                ],
+                "summary": "Delete a quiz",
+                "description": "",
+                "operationId": "deleteQuiz",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "quizId",
+                        "description": "Delete by Quiz Id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success deleted!"
+                    },
+                    "400": {
+                        "description": "Invalid quiz value"
+                    }
+                },
+                "security": [
+                    {
+                        "rest_auth": [
+                            "write_rest",
+                            "read_rest"
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "securityDefinitions": {
+        "api_key": {
+            "type": "apiKey",
+            "name": "api_key",
+            "in": "header"
+        },
+        "rest_auth": {
+            "type": "oauth2",
+            "authorizationUrl": "http://id.leadstec.com/auth/",
+            "flow": "implicit",
+            "scopes": {
+                "write_rest": "modify rest in your account",
+                "read_rest": "read your rest"
+            }
+        }
+    },
+    "definitions": {
+        "Quizzes": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "job_id": {
+                    "type": "string"
+                },
+                "question_list": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "amount": {
+                    "type": "integer"
+                },
+                "createdOn": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
