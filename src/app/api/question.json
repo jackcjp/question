@@ -204,6 +204,13 @@
                         "schema": {
                             "$ref": "#/definitions/Question"
                         }
+                    },
+                    {
+                        "in": "query",
+                        "name": "flag",
+                        "description": "detemine to add or remove choice options in choice object, value is `remove`, null means added in default",
+                        "required": false,
+                        "type": "string"
                     }
                 ],
                 "responses": {

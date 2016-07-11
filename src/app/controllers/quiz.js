@@ -11,11 +11,12 @@ exports.create = function(req,res){
   var searchCon = {};
   var quiz = new Quizzes(req.body);
   searchCon.title = quiz.title;
+
   var path = req.path+'?'+querystring.stringify(searchCon);
   index.operations(path,'','',function(data,code){
-  console.dir(JSON.parse(data));
+    console.dir(JSON.parse(data));
     if(!JSON.parse(data).length){
-      index.operations(req.path,'',quiz,function(returnData){
+      index.operations(req.path,req.method,quiz,function(returnData){
         res.json(JSON.parse(returnData));
       });
     }else{

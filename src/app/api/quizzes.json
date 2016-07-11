@@ -211,6 +211,13 @@
                         "schema": {
                             "$ref": "#/definitions/Quizzes"
                         }
+                    },
+                    {
+                        "in": "query",
+                        "name": "flag",
+                        "description": "detemine to add or remove question id in question_list, value is `remove`, null means added in default",
+                        "required": false,
+                        "type": "string"
                     }
                 ],
                 "responses": {
