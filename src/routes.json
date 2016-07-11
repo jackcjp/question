@@ -1,5 +1,0 @@
-{
-  "/api/": "/",
-  "/blog/:resource/:id/show": "/:resource/:id",
-  "/tasks/:taskId/choise": "/tasks/:taskId"
-}

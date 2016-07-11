@@ -1,7 +1,7 @@
 {
-  "name": "update",
-  "description": "Update",
-  "version": "0.3.1",
+  "name": "question",
+  "description": "Question",
+  "version": "0.1.0",
   "private": true,
   "author": "Jpchen <jpchen@leadstec.com>",
   "license": "Leadstec Commercial License",

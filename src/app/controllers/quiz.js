@@ -7,13 +7,6 @@ var mongoose = require('mongoose'),
   index = require('../../dbconf/index'),
   _ = require('lodash');
 
-exports.index = function(req,res){
-  res.render('index',{
-    title: 'Quizzes',
-    content: 'The Quizzes server is running with '+ (index.dbMode).charAt(0).toUpperCase()+ (index.dbMode).slice(1) +'~'
-  });
-};
-
 exports.create = function(req,res){
   var searchCon = {};
   var quiz = new Quizzes(req.body);

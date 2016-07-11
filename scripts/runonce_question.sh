@@ -1,9 +1,9 @@
 #!/bin/bash
 
 #
-# Update setup
+# Question setup
 #
-runonce_update() {
+runonce_question() {
 
     notify title "QUESTION: Initialize container settings ... "
 

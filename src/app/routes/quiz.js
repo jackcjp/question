@@ -9,8 +9,6 @@ var checkTocken = require('../../app/controllers/check-token'),
 
 module.exports = function(app){
 
-  app.route('/').get(quizzes.index);
-
   app.route('/api/:filename').get(index.getApi);
 
   app.route('/quizzes')

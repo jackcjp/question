@@ -2,11 +2,11 @@
 
 set -e
 
-notify title "UPDATE: Pre-installation starts ..."
+notify title "QUESTION: Pre-installation starts ..."
 
 # copy schema and add to metadata
-cp -f /scripts/setup/update.json ${LCS_HOME}/schema/update.json
-lcs-bt --append update
+cp -f /scripts/setup/question.json ${LCS_HOME}/schema/question.json
+lcs-bt --append question
 
 # complete
-notify title "UPDATE: Image installation completed."
+notify title "QUESTION: Image installation completed."
