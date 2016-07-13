@@ -5,7 +5,7 @@
         "version": "0.1.0",
         "title": "Quizzes",
         "contact": {
-            "name": "jpchen@leadstec.com"
+            "name": "jpchen@example.com"
         }
     },
     "host": "nodechen.com:41439",
@@ -286,7 +286,7 @@
         },
         "rest_auth": {
             "type": "oauth2",
-            "authorizationUrl": "http://id.leadstec.com/auth/",
+            "authorizationUrl": "http://id.example.com/auth/",
             "flow": "implicit",
             "scopes": {
                 "write_rest": "modify rest in your account",
